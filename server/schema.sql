@@ -13,9 +13,9 @@ CREATE TABLE users (
 CREATE TABLE goals (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   userid INT,
-  goalname VARCHAR(50),
+  goalName VARCHAR(50),
   frequency VARCHAR(50),
-  lastcomplete VARCHAR(50) DEFAULT NULL,
+  lastComplete VARCHAR(50) DEFAULT NULL,
   FOREIGN KEY (userid) REFERENCES users(id)
 );
 

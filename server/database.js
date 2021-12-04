@@ -24,8 +24,16 @@ module.exports = {
     const query = 'SELECT * FROM goals WHERE userid = ?';
     return connection.query(query, [userid]);
   },
-  newGoal: function (goal) {
-    const query = 'INSERT INTO goals (userid, goalName, frequency, lastComplete) VALUES (?,?,?,?)';
-    return connection.query(query, [goal.userid], [goal.goalName], [goal.frequency], [goal.lastComplete]);
+  newGoal: function ({ userid, goalName, frequency, lastComplete }) {
+    const query = 'INSERT INTO goals (userid, goalName, frequency, lastComplete) VALUES (?, ?, ?, ?)';
+    return connection.query(query, [ userid, goalName, frequency, lastComplete ]);
+  },
+  completeGoal: function (id) {
+    const query = 'UPDATE goals SET lastcomplete = CURRENT_TIMESTAMP WHERE id = ?';
+    return connection.query(query, [id])
+  },
+  deleteGoal: function (id) {
+    const query = 'DELETE FROM goals WHERE id =?';
+    return connection.query(query, [id])
   }
 }
