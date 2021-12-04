@@ -30,6 +30,7 @@ module.exports = {
   },
   completeGoal: function (id) {
     const query = 'UPDATE goals SET lastcomplete = CURRENT_TIMESTAMP WHERE id = ?';
+    // DATE_FORMAT(CURRENT_TIMESTAMP, 'dddd, MMM, dd')
     return connection.query(query, [id])
   },
   deleteGoal: function (id) {

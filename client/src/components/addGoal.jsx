@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class AddGoals extends React.Component {
   constructor(props) {
@@ -30,21 +31,24 @@ class AddGoals extends React.Component {
     this.props.changePage('Goals');
   }
   submitGoal(event) {
+    const {user, goalName, frequency} = this.state;
     if (!this.state.goalName) {
       alert("Please enter a goal name")
     } else if (!this.state.frequency) {
       alert("Please select a frequency")
     } else {
       //POST request (use this.state)
-
-      //return to goal screen
-      this.props.changePage('Goals');
+      axios.post(`http://localhost:3000/goals?userid=${user}&goalName=${goalName}&frequency=${frequency}&lastComplete=NULL`)
+      .then((result) => {
+        this.props.changePage('Goals');
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     }
   }
 
   render() {
-    console.log(this.props)
-
     return (
       <div>
         <h3>Add a new goal</h3>

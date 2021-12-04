@@ -27,9 +27,10 @@ app.post('/users', function (req, res) {
     });
 })
 
-app.delete('/users', function (req, res) {
-  res.send('delete user')
-})
+//future development
+// app.delete('/users', function (req, res) {
+//   res.send('delete user')
+// })
 
 //GOALS endpoints
 app.get('/goals', function (req, res) {
