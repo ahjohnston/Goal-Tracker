@@ -26,6 +26,7 @@
     "mysql2-promise": "^0.1.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "styled-components": "^5.3.3",
     "underscore": "^1.12.1"
   }
 }

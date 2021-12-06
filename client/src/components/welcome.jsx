@@ -1,6 +1,8 @@
 import React from 'react';
 import users from './dummyData/users.js';
 import axios from 'axios';
+import styled from 'styled-components';
+import { Heading, FunctionButton, ListButton, BottomMenu, Input, Scroll } from './sharedStyle.js';
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -29,7 +31,7 @@ class Welcome extends React.Component {
 
   async selectUser(event) {
     event.preventDefault();
-    await this.props.changeUser(event.target.value)
+    await this.props.changeUser(event.target.value, event.target.name)
     await this.props.changePage('Goals')
   }
   typeUser(event) {
@@ -41,37 +43,43 @@ class Welcome extends React.Component {
   //for NEW users:
   submitUser(event) {
     event.preventDefault();
+    if (this.state.newUser.length < 2) {
+      alert("Please enter a valid name")
+    } else {
 
-    //this.state.newUser -> POST request to users table
-    axios.post(`http://localhost:3000/users?name=${this.state.newUser}`)
-      .then((result) => {
-        //currentPage: Goals
-        this.props.changePage('Goals')
-        //currentUser: newUser
-        this.props.changeUser(this.state.newUser)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+      //this.state.newUser -> POST request to users table
+      axios.post(`http://localhost:3000/users?name=${this.state.newUser}`)
+        .then((result) => {
+          //currentPage: Goals
+          this.props.changePage('Goals')
+          //currentUser: newUser
+          this.props.changeUser(this.state.newUser)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
   }
 
   render() {
     return (
       <div>
-        Welcome! Please select your name:
-        <div>
+        <Heading>Welcome! <br></br> Please select your name:</Heading>
+        <Scroll>
           {this.state.userList.map(user =>
-            <button
-              value={user.id}
-              key={user.id}
-              onClick={this.selectUser}>{user.username}
-            </button>)}
-        </div>
-        <li>New User:
-          <input onChange={this.typeUser
-          } value={this.state.newUser} placeholder="your name here" />
-          <button onClick={this.submitUser}>Go!</button>
-        </li>
+            <div key={user.id}>
+              <ListButton
+                value={user.id}
+                name={user.username}
+                onClick={this.selectUser}>{user.username}
+              </ListButton>
+            </div>)}
+        </Scroll>
+        <BottomMenu>
+          <Input onChange={this.typeUser
+          } value={this.state.newUser} placeholder="Create a new user" />
+          <FunctionButton onClick={this.submitUser}>Go!</FunctionButton>
+        </BottomMenu>
       </div>
 
     )

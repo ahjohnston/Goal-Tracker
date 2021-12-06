@@ -1,6 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import {Heading, CenteredPage, CenteredRow, SelectButton, FunctionButton, BottomMenu } from './sharedStyle.js';
 
+const ListButton = styled.button`
+  background-color: pink;
+`
 class AddGoals extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +36,7 @@ class AddGoals extends React.Component {
     this.props.changePage('Goals');
   }
   submitGoal(event) {
-    const {user, goalName, frequency} = this.state;
+    const { user, goalName, frequency } = this.state;
     if (!this.state.goalName) {
       alert("Please enter a goal name")
     } else if (!this.state.frequency) {
@@ -39,32 +44,34 @@ class AddGoals extends React.Component {
     } else {
       //POST request (use this.state)
       axios.post(`http://localhost:3000/goals?userid=${user}&goalName=${goalName}&frequency=${frequency}&lastComplete=NULL`)
-      .then((result) => {
-        this.props.changePage('Goals');
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+        .then((result) => {
+          this.props.changePage('Goals');
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 
   render() {
     return (
-      <div>
-        <h3>Add a new goal</h3>
-        <div>
+      <CenteredPage>
+        <Heading>Add a new goal</Heading>
+        <CenteredPage>
           <h4> Goal Name:</h4>
           <input onChange={this.updateGoal} placeholder="enter your goal here" value={this.state.goalName} />
           <h4> Frequency:</h4>
-          <button onClick={this.updateFrequency} value="daily">Daily</button>
-          <button onClick={this.updateFrequency} value="weekly">Weekly</button>
+          <CenteredRow>
+            <SelectButton onClick={this.updateFrequency} value="daily">Daily</SelectButton>
+            <SelectButton onClick={this.updateFrequency} value="weekly">Weekly</SelectButton>
+          </CenteredRow>
 
-          <div>
-            <button onClick={this.submitGoal}>Submit</button>
-            <button onClick={this.cancel}>Cancel</button>
-          </div>
-        </div>
-      </div>
+          <BottomMenu>
+            <FunctionButton onClick={this.submitGoal}>Submit</FunctionButton>
+            <FunctionButton onClick={this.cancel}>Cancel</FunctionButton>
+          </BottomMenu>
+        </CenteredPage>
+      </CenteredPage>
 
     )
   }

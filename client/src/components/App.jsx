@@ -2,21 +2,31 @@ import React from 'react';
 import Welcome from './welcome.jsx';
 import Goals from './goals.jsx';
 import AddGoal from './addGoal.jsx';
+import styled from 'styled-components';
+import {Body} from './sharedStyle.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentUser: '',
+      currentUserName: '',
       currentPage: 'Welcome'
     }
     //bind functions here
     this.changeUser = this.changeUser.bind(this);
     this.changePage = this.changePage.bind(this);
+    this.changeuserName = this.changeUserName.bind(this);
   }
-  async changeUser(id) {
+  async changeUser(id, name) {
     await this.setState({
-      currentUser: id
+      currentUser: id,
+      currentUserName: name
+    })
+  }
+  changeUserName(name) {
+    this.setState({
+      currentUserName: name
     })
   }
   async changePage(page) {
@@ -28,28 +38,34 @@ class App extends React.Component {
   render() {
     if (this.state.currentPage === 'Welcome') {
       return (
-        <Welcome
-          name="Welcome"
-          changeUser={this.changeUser}
-          changePage={this.changePage}
-        />
+        <Body>
+          <Welcome
+            name="Welcome"
+            changeUser={this.changeUser}
+            changePage={this.changePage}
+            changeUserName={this.changeUserName}
+          />
+        </Body>
 
       )
     } else if (this.state.currentPage === 'Goals') {
       return (
-        <Goals
-          changePage={this.changePage}
-          userid={this.state.currentUser}
-        />
-
+        <Body>
+          <Goals
+            changePage={this.changePage}
+            userid={this.state.currentUser}
+            username={this.state.currentUserName}
+          />
+        </Body>
       )
     } else if (this.state.currentPage === 'AddGoal') {
       return (
-        <AddGoal
-          changePage={this.changePage}
-          userid={this.state.currentUser}
-        />
-
+        <Body>
+          <AddGoal
+            changePage={this.changePage}
+            userid={this.state.currentUser}
+          />
+        </Body>
       )
     }
   }
