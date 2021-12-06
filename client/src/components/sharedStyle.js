@@ -59,6 +59,9 @@ export const SelectButton = styled.button`
   width: 40%;
   border: none;
 `
+export const Selected = styled(SelectButton)`
+  background-color: pink;
+`
 export const CenteredRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -72,13 +75,6 @@ export const CenteredPage = styled.div`
   justify-content: center;
   margin: 10%;
 `
-export const GoalText = styled.div`
-  position: absolute;
-  top: 30%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`
 export const GoalButton = styled.div`
   position: relative;
   padding-bottom: 100%;
@@ -89,7 +85,14 @@ export const GoalButton = styled.div`
   text-align: center;
   flex-wrap: wrap;
   font-size: 20px;
-  `
+`
+export const GoalText = styled.div`
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
 export const Heading = styled.h1`
   text-align: center;
 `

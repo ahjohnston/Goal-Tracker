@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import {Heading, CenteredPage, CenteredRow, SelectButton, FunctionButton, BottomMenu } from './sharedStyle.js';
+import {Heading, CenteredPage, CenteredRow, SelectButton, FunctionButton, BottomMenu, Selected } from './sharedStyle.js';
 
 const ListButton = styled.button`
   background-color: pink;
@@ -54,6 +54,15 @@ class AddGoals extends React.Component {
   }
 
   render() {
+    let dailyButton = <SelectButton onClick={this.updateFrequency} value="daily">Daily</SelectButton>
+
+    let weeklyButton =  <SelectButton onClick={this.updateFrequency} value="weekly">Weekly</SelectButton>
+
+    if (this.state.frequency === 'daily') {
+      dailyButton = <Selected onClick={this.updateFrequency} value="daily">Daily</Selected>
+    } else if (this.state.frequecy === 'weekly'){
+      <Selected onClick={this.updateFrequency} value="weekly">Weekly</Selected>
+    }
     return (
       <CenteredPage>
         <Heading>Add a new goal</Heading>
@@ -62,8 +71,8 @@ class AddGoals extends React.Component {
           <input onChange={this.updateGoal} placeholder="enter your goal here" value={this.state.goalName} />
           <h4> Frequency:</h4>
           <CenteredRow>
-            <SelectButton onClick={this.updateFrequency} value="daily">Daily</SelectButton>
-            <SelectButton onClick={this.updateFrequency} value="weekly">Weekly</SelectButton>
+            {dailyButton}
+            {weeklyButton}
           </CenteredRow>
 
           <BottomMenu>
