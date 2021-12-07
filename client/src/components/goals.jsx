@@ -63,15 +63,15 @@ class Goals extends React.Component {
       if (goal.userid === Number(this.state.currentUser)) {
         let date = null;
         let lastComplete = null;
-        if (goal.lastcomplete && goal.lastcomplete !== 'NULL') {
-          date = goal.lastcomplete;
+        if (goal.lastComplete && goal.lastComplete !== 'NULL') {
+          date = goal.lastComplete;
           lastComplete = "Last completed on:";
         }
         return (
           <div key={goal.id}>
             <GoalButton>
               <GoalText onClick={this.clickGoal} value={goal.id}>
-                {goal.goalname}
+                {goal.goalName}
                 <br></br>
                 {/* </div> */}
                 {/* <div> */}
