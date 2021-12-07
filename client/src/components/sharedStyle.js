@@ -1,13 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
 
-// const pulse = keyframes`
-//   0% {
-//     opacity: 0;
-//   };
-//   100% {
-//     opacity: 1;
-//   };
-// `
 const fadeIn = keyframes`
   0% {
     background-position: 0% 50%;
@@ -19,7 +11,6 @@ const fadeIn = keyframes`
     background-position: 0% 50%;
   };
 `
-
 const animation = props =>
   css`
   ${ fadeIn } ease 15s infinite alternate;
@@ -29,6 +20,7 @@ export const Body = styled.div`
   background-size: 400% 400%;
   height: 100vh;
   animation: ${animation};
+  font-family: Optima, sans-serif	;
 `
 export const ListButton = styled.button`
   background-color: rgba(134, 177, 247,0.3);
@@ -37,6 +29,7 @@ export const ListButton = styled.button`
   margin: 2%;
   font-size: 26px;
   border: none;
+  font-family: Optima, sans-serif	;
 `
 export const BottomMenu = styled.div`
   border: solid 2px;
@@ -45,6 +38,7 @@ export const BottomMenu = styled.div`
   margin:2%;
   display: flex;
   justify-content: space-around;
+  font-family: Optima, sans-serif	;
 `
 export const FunctionButton = styled.button`
   background-color: rgba(186, 255, 191, 0.3);
@@ -52,6 +46,7 @@ export const FunctionButton = styled.button`
   margin: 2px 0px;
   border: none;
   border-radius: 5px;
+  font-family: Optima, sans-serif	;
 `
 export const SelectButton = styled.button`
   margin: 10px;
@@ -80,24 +75,32 @@ export const GoalButton = styled.div`
   padding-bottom: 100%;
   height: 0;
 
-  border: solid;
   border-radius: 50%;
-  text-align: center;
-  flex-wrap: wrap;
-  font-size: 20px;
+
+  background: rgba(255, 255, 255, 0.15)
+  background: url('images/schmidt.png') no-repeat ;
 `
-export const GoalText = styled.div`
+export const GoalText = styled.button`
   position: absolute;
-  top: 30%;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  font-family: Optima, sans-serif	;
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+  flex-wrap: wrap;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.15)
 `
 export const Heading = styled.h1`
   text-align: center;
+  font-family: Optima, sans-serif	;
 `
 export const Input = styled.input`
   margin: 2px 0px;
+  font-family: Optima, sans-serif	;
 `
 export const Scroll = styled.div`
   height: 450px;

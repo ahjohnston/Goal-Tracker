@@ -4,16 +4,12 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Heading, FunctionButton, GoalButton, BottomMenu, CenteredPage, GoalText, Scroll } from './sharedStyle.js';
 
-
-const ListButton = styled.button`
-  background-color: pink;
-`
 class Goals extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentUser: this.props.userid,
-      goalList: []
+      goalList: [],
     }
     //bind functions here
     this.clickGoal = this.clickGoal.bind(this);
@@ -21,31 +17,38 @@ class Goals extends React.Component {
     this.addGoal = this.addGoal.bind(this);
     this.deleteGoal = this.deleteGoal.bind(this);
   }
-
-  componentDidMount() {
+  getRequest() {
     axios(`http://localhost:3000/goals?id=${this.state.currentUser}`)
       .then((result) => {
         this.setState({
           goalList: result.data
         })
       })
+      .then(() => {
+        console.log('updated state', this.state.goalList)
+      })
       .catch((err) => {
         console.log(err)
       })
+  }
+  componentDidMount() {
+    this.getRequest();
   }
 
   clickGoal(event) {
     //change button color
     //PUT request: update lastComplete
+    console.log('event value', event.target.value, event.target)
     axios.put(`http://localhost:3000/goals?id=${event.target.value}`)
-      .then((result) => {
-        console.log('this should auto update on the DOM')
+      .then(() => {
+        this.getRequest();
       })
       .catch((err) => {
         console.log(err)
       })
   }
   changeUser(event) {
+    console.log(event.target)
     this.props.changePage('Welcome')
   }
   addGoal(event) {
@@ -53,8 +56,8 @@ class Goals extends React.Component {
   }
   deleteGoal(event) {
     axios.delete(`http://localhost:3000/goals?id=${event.target.value}`)
-      .then((result) => {
-        console.log('this should auto update on the DOM')
+      .then(() => {
+        this.getRequest()
       })
       .catch((err) => {
         console.log(err)
@@ -72,10 +75,8 @@ class Goals extends React.Component {
         }
         return (
           <div key={goal.id}>
-            <GoalButton
-              onClick={this.clickGoal}
-              value={goal.id}>
-              <GoalText>
+            <GoalButton>
+              <GoalText onClick={this.clickGoal} value={goal.id}>
                 {goal.goalname}
                 <br></br>
                 {/* </div> */}
@@ -85,9 +86,9 @@ class Goals extends React.Component {
                 {date}
               </GoalText>
             </GoalButton>
-            {/* <button
+            <FunctionButton
               value={goal.id}
-              onClick={this.deleteGoal}>X</button> */}
+              onClick={this.deleteGoal}>X</FunctionButton>
           </div>
         )
       }
