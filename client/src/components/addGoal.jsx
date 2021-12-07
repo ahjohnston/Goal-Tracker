@@ -25,7 +25,6 @@ class AddGoals extends React.Component {
     this.setState({
       frequency: event.target.value
     })
-    //change button color
   }
   updateGoal(event) {
     this.setState({
@@ -60,8 +59,8 @@ class AddGoals extends React.Component {
 
     if (this.state.frequency === 'daily') {
       dailyButton = <Selected onClick={this.updateFrequency} value="daily">Daily</Selected>
-    } else if (this.state.frequecy === 'weekly'){
-      <Selected onClick={this.updateFrequency} value="weekly">Weekly</Selected>
+    } else if (this.state.frequency === 'weekly'){
+      weeklyButton = <Selected onClick={this.updateFrequency} value="weekly">Weekly</Selected>
     }
     return (
       <CenteredPage>

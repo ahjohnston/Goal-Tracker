@@ -24,9 +24,6 @@ class Goals extends React.Component {
           goalList: result.data
         })
       })
-      .then(() => {
-        console.log('updated state', this.state.goalList)
-      })
       .catch((err) => {
         console.log(err)
       })
@@ -37,8 +34,6 @@ class Goals extends React.Component {
 
   clickGoal(event) {
     //change button color
-    //PUT request: update lastComplete
-    console.log('event value', event.target.value, event.target)
     axios.put(`http://localhost:3000/goals?id=${event.target.value}`)
       .then(() => {
         this.getRequest();
@@ -48,7 +43,6 @@ class Goals extends React.Component {
       })
   }
   changeUser(event) {
-    console.log(event.target)
     this.props.changePage('Welcome')
   }
   addGoal(event) {
