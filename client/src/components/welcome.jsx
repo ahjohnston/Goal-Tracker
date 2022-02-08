@@ -17,7 +17,7 @@ class Welcome extends React.Component {
     this.submitUser = this.submitUser.bind(this);
 
   }
-  componentDidMount() {
+  getUsers() {
     axios('http://localhost:3000/users')
       .then((result) => {
         this.setState({
@@ -27,6 +27,9 @@ class Welcome extends React.Component {
       .catch((err) => {
         console.log(err)
       })
+  }
+  componentDidMount() {
+    this.getUsers();
   }
 
   async selectUser(event) {
@@ -49,11 +52,16 @@ class Welcome extends React.Component {
 
       //this.state.newUser -> POST request to users table
       axios.post(`http://localhost:3000/users?name=${this.state.newUser}`)
-        .then((result) => {
+        .then(() => {
+          this.getUsers();
+        })
+        .then(() => {
+          //need the new user's id!
+          this.props.changeUser(this.state.userList.length + 1, this.state.newUser)
+        })
+        .then(() => {
           //currentPage: Goals
           this.props.changePage('Goals')
-          //currentUser: newUser
-          this.props.changeUser(this.state.newUser)
         })
         .catch((err) => {
           console.log(err);

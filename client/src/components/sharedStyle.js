@@ -21,6 +21,8 @@ export const Body = styled.div`
   height: 100vh;
   animation: ${animation};
   font-family: Optima, sans-serif	;
+  margin: 0px;
+  padding: 0px;
 `
 export const ListButton = styled.button`
   background-color: rgba(134, 177, 247,0.3);
@@ -32,30 +34,36 @@ export const ListButton = styled.button`
   font-family: Optima, sans-serif	;
 `
 export const BottomMenu = styled.div`
-  border: solid 2px;
-  border-color: blue yellow green red;
+  border-color: none;
+  background-color: rgba( 255, 255, 255, 0.5);
   width: 96%;
-  margin:2%;
+  margin-bottom: 0px;
   display: flex;
   justify-content: space-around;
   font-family: Optima, sans-serif	;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `
 export const FunctionButton = styled.button`
   background-color: rgba(186, 255, 191, 0.3);
   padding: 3%;
   margin: 2px 0px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: Optima, sans-serif	;
 `
 export const SelectButton = styled.button`
   margin: 10px;
-  padding: 20px;
+  padding: 10px;
   width: 40%;
-  border: none;
+  border: solid rgba(255, 255, 255, 0.0) 2px;
+  border-radius: 10px;
 `
 export const Selected = styled(SelectButton)`
   background-color: pink;
+  border: solid white 2px;
+  border-radius: 10px;
 `
 export const CenteredRow = styled.div`
   display: flex;
@@ -68,7 +76,7 @@ export const CenteredPage = styled.div`
   flex-direction: column;
   align-items: space-around;
   justify-content: center;
-  margin: 10%;
+  margin-bottom: 10%;
 `
 export const GoalButton = styled.div`
   position: relative;
@@ -101,8 +109,9 @@ export const Heading = styled.h1`
 export const Input = styled.input`
   margin: 2px 0px;
   font-family: Optima, sans-serif	;
+  border-radius: 10px;
 `
 export const Scroll = styled.div`
-  height: 450px;
+  height: 500px;
   overflow: scroll;
 `

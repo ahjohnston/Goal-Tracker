@@ -16,16 +16,10 @@ class App extends React.Component {
     //bind functions here
     this.changeUser = this.changeUser.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.changeuserName = this.changeUserName.bind(this);
   }
   async changeUser(id, name) {
     await this.setState({
       currentUser: id,
-      currentUserName: name
-    })
-  }
-  changeUserName(name) {
-    this.setState({
       currentUserName: name
     })
   }
@@ -34,7 +28,6 @@ class App extends React.Component {
       currentPage: page
     })
   }
-
   render() {
     if (this.state.currentPage === 'Welcome') {
       return (
@@ -43,7 +36,6 @@ class App extends React.Component {
             name="Welcome"
             changeUser={this.changeUser}
             changePage={this.changePage}
-            changeUserName={this.changeUserName}
           />
         </Body>
 
