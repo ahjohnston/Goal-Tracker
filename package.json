@@ -1,8 +1,8 @@
 {
-  "name": "movie-browser",
+  "name": "goal-tracker",
   "version": "1.1.0",
   "description": "HRSF77/78 Review: Movie Browser",
-  "author": "Hack Reactor <curriculum.team@hackreactor.com>",
+  "author": "Annie Johnston",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
@@ -27,6 +27,17 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "styled-components": "^5.3.3",
-    "underscore": "^1.12.1"
-  }
+    "underscore": "^1.12.1",
+    "got": "^11.3.0",
+    "tape": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahjohnston/MVP"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ]
 }
