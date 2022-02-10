@@ -22,6 +22,7 @@
   "dependencies": {
     "axios": "^0.21.4",
     "express": "^4.17.1",
+    "ejs": "^3.1.5",
     "mysql2": "^2.3.3",
     "mysql2-promise": "^0.1.4",
     "react": "^16.14.0",
@@ -30,6 +31,9 @@
     "underscore": "^1.12.1",
     "got": "^11.3.0",
     "tape": "^4.7.0"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "repository": {
     "type": "git",
