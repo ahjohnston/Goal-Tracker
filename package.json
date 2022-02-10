@@ -9,7 +9,7 @@
   "license": "UNLICENSED",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "react-dev": "webpack --config ./webpack.config.js  -w"
   },
   "devDependencies": {
