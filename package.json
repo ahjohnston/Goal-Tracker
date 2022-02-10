@@ -1,10 +1,13 @@
 {
   "name": "goal-tracker",
   "version": "1.1.0",
-  "description": "HRSF77/78 Review: Movie Browser",
+  "description": "Annie's MVP project",
+  "engines": {
+    "node": "14.x"
+  },
   "author": "Annie Johnston",
   "license": "UNLICENSED",
-  "private": true,
+  "main": "server/index.js",
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack --config ./webpack.config.js  -w"
@@ -31,9 +34,6 @@
     "underscore": "^1.12.1",
     "got": "^11.3.0",
     "tape": "^4.7.0"
-  },
-  "engines": {
-    "node": "14.x"
   },
   "repository": {
     "type": "git",
