@@ -1,5 +1,8 @@
 
 # Goal Tracker
+![add a new goal](/assets/addGoal.png)
+![new goal](/assets/incompleteGoal.png)
+![completed goal](/assets/completeGoal.png)
 
 ## Getting Started
 
