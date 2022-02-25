@@ -4,6 +4,8 @@
 ![new goal](/assets/incompleteGoal.png)
 ![completed goal](/assets/completeGoal.png)
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7WOvwivCBqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Getting Started
 
 1. Fork and clone this repo, then open two terminal tabs and navigate to the root directory.
